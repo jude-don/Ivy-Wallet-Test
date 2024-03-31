@@ -2,6 +2,9 @@ package com.ivy.math
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import com.ivy.math.calculator.CalculatorOperator
+import com.ivy.math.calculator.appendDecimalSeparator
+import com.ivy.math.calculator.appendTo
 import com.ivy.parser.Parser
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -65,6 +68,133 @@ internal class ExpressionParserTest {
         // assertion
         assertThat(actual).isEqualTo(expected)
     }
+
+    @Test
+    fun `appendDecimalSeparator adds decimal when last character is a number`() {
+        val expression = "3"
+        val decimalSeparator = '.'
+        val expected = "3."
+
+        val result = appendDecimalSeparator(expression, decimalSeparator)
+
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendDecimalSeparator does not add decimal when last character is a decimal`() {
+        val expression = "3."
+        val decimalSeparator = '.'
+        val expected = "3."
+
+        val result = appendDecimalSeparator(expression, decimalSeparator)
+
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendDecimalSeparator does not add decimal when last character is not a digit`() {
+        val expression = "3+"
+        val decimalSeparator = '.'
+        val expected = "3+0."
+
+        val result = appendDecimalSeparator(expression, decimalSeparator)
+
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendDecimalSeparator adds decimal after a closing parenthesis`() {
+        val expression = "(3+3)"
+        val decimalSeparator = '.'
+        val expected = "(3+3)"
+
+        val result = appendDecimalSeparator(expression, decimalSeparator)
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun `appendDecimalSeparator does not add another decimal if last number already contains one`() {
+        val expression = "3.5+2"
+        val decimalSeparator = '.'
+        val expected = "3.5+2."
+
+        val result = appendDecimalSeparator(expression, decimalSeparator)
+
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendDecimalSeparator does not add decimal to empty expression`() {
+        val expression = ""
+        val decimalSeparator = '.'
+        val expected = "0."
+
+        val result = appendDecimalSeparator(expression, decimalSeparator)
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+
+    @Test
+    fun `appendTo appends plus correctly`() {
+        val expression = "10"
+        val expected = "10+"
+        val result = appendTo(expression, CalculatorOperator.Plus)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendTo appends minus correctly`() {
+        val expression = "10"
+        val expected = "10-"
+        val result = appendTo(expression, CalculatorOperator.Minus)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendTo appends multiply correctly`() {
+        val expression = "10"
+        val expected = "10*"
+        val result = appendTo(expression, CalculatorOperator.Multiply)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendTo appends divide correctly`() {
+        val expression = "10"
+        val expected = "10/"
+        val result = appendTo(expression, CalculatorOperator.Divide)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendTo appends brackets correctly at the beginning`() {
+        val expression = ""
+        val expected = "("
+        val result = appendTo(expression, CalculatorOperator.Brackets)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendTo appends brackets correctly after a number`() {
+        val expression = "10"
+        val expected = "10*("
+        val result = appendTo(expression, CalculatorOperator.Brackets)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun `appendTo appends percent correctly`() {
+        val expression = "10"
+        val expected = "10%"
+        val result = appendTo(expression, CalculatorOperator.Percent)
+        assertEquals(expected, result)
+    }
+
+    // Add more tests for each specific function and scenario
+    // ...
+    
 
 
 }
