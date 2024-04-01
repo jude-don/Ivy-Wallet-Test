@@ -32,6 +32,6 @@ internal class AddTest{
     fun `Testing add eval function`(){
         val result = add.eval()
 
-        assertThat(result).isEqualTo(8)
+        assertThat(result).isEqualTo(8.0)
     }
 }
