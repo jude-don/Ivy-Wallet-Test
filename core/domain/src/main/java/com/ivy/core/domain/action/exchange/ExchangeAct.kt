@@ -15,7 +15,7 @@ class ExchangeAct @Inject constructor(
         val outputCurrency: String,
     )
 
-    override suspend fun action(input: Input): Value {
+    public override suspend fun action(input: Input): Value {
         val rates = exchangeRatesFlow().first()
         return Value(
             amount = exchange(

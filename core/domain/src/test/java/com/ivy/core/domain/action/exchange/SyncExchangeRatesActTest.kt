@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-internal class SyncExchangeRatesActTest { // This is to test the exchange rates class
+internal class SyncExchangeRatesActTest {  // This is to test the if exchange rates are added to the database
 
     private lateinit var syncExchangeRatesAct: SyncExchangeRatesAct
     private lateinit var exchangeProviderFake: RemoteExchangeProviderFake
