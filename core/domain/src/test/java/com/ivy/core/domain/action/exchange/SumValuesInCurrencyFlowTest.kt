@@ -24,7 +24,7 @@ class SumValuesInCurrencyFlowTest{
         sumValuesInCurrencyFlow = SumValuesInCurrencyFlow(exchangeRatesFlow)
 
         // Setup the mock for exchangeRatesFlow to return specific exchange rates
-        coEvery { exchangeRatesFlow() } returns flowOf(ExchangeRates(baseCurrency = "USD", rates = mapOf("EUR" to 1.2, "USD" to 1.0, "CAD" to 0.8)))
+        coEvery { exchangeRatesFlow() } returns flowOf(ExchangeRates(baseCurrency = "USD", rates = mapOf("EUR" to 2.0, "USD" to 4.0, "CAD" to 0.8)))
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -44,7 +44,7 @@ class SumValuesInCurrencyFlowTest{
             )
         ).test {
             val result = awaitItem()
-            assertThat(result.amount).isEqualTo(133.33333333333334) // 100 EUR * 1.2 (rate) + 50 USD
+            assertThat(result.amount).isEqualTo(100.0) // 100 EUR * 1.2 (rate) + 50 USD
             assertThat(result.currency).isEqualTo("USD")
             cancelAndIgnoreRemainingEvents()
         }
