@@ -44,7 +44,7 @@ class InvalidateAccCacheAct @Inject constructor(
         data class Invalidate(override val accountIds: NonEmptyList<String>) : Input
     }
 
-    override suspend fun action(input: Input) {
+    public override suspend fun action(input: Input) {
         when (input) {
             is Input.OnDeleteAcc -> {
                 invalidateCache(input.accountIds.head)
