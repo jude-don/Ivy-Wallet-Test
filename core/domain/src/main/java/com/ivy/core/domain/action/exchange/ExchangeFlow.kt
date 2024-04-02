@@ -21,7 +21,7 @@ class ExchangeFlow @Inject constructor(
         val outputCurrency: CurrencyCode? = null,
     )
 
-    override fun createFlow(input: Input): Flow<Value> =
+    public override fun createFlow(input: Input): Flow<Value> =
         exchangeRatesFlow().map { rates ->
             val outputCurrency = input.outputCurrency ?: rates.baseCurrency
             val exchangedAmount = exchange(
