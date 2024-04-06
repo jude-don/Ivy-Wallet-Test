@@ -9,11 +9,18 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class ExchangeFlowTest{
-    private val exchangeRatesFlow = mockk<ExchangeRatesFlow>()
-    private val exchangeFlow = ExchangeFlow(exchangeRatesFlow)
+    private lateinit var exchangeRatesFlow :ExchangeRatesFlow
+    private lateinit var exchangeFlow :ExchangeFlow
+
+    @BeforeEach
+    fun setUp(){
+        exchangeRatesFlow =mockk()
+        exchangeFlow = ExchangeFlow(exchangeRatesFlow)
+    }
 
     @Test
     fun `exchangeFlow should correctly convert currency based on exchange rates`() = runBlocking {
