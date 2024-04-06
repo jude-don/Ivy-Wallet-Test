@@ -6,7 +6,7 @@ import com.ivy.data.ItemIconId
 import com.ivy.data.Sync
 import java.util.*
 
-@Deprecated("will be removed!")
+//@Deprecated("will be removed!")
 data class Account(
     val id: UUID,
     val name: String,
