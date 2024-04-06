@@ -28,7 +28,8 @@ class AdjustAccBalanceAct @Inject constructor(
     )
 
     override suspend fun action(input: Input) {
-        val accBalance = accBalanceFlow(AccBalanceFlow.Input(account = input.account)).first()
+        val accBalance = accBalanceFlow(
+            AccBalanceFlow.Input(account = input.account)).first()
 
         val adjustTrn = adjustBalanceTrn(
             timeProvider = timeProvider,

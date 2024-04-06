@@ -1,4 +1,4 @@
-package com.ivy.core.domain.action.exchange
+package com.ivy.exchangeRates
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -9,7 +9,6 @@ import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.extension.AfterEachCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
-
 
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class MainCoroutineExtension(
