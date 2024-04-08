@@ -11,6 +11,9 @@ plugins {
 apply<com.ivy.buildsrc.IvyPlugin>()
 
 dependencies {
+    implementation(project(":core:persistence"))
+    implementation(project(":common:main"))
+    implementation("androidx.room:room-ktx:2.5.0")
     Hilt()
     HiltTesting(
         dependency = { api(it) },

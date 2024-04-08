@@ -10,6 +10,8 @@ plugins {
 apply<com.ivy.buildsrc.IvyComposePlugin>()
 
 dependencies {
+    implementation("androidx.room:room-ktx:2.5.0")
+    androidTestImplementation(project(":app"))
     Hilt()
     implementation(project(":common:main"))
     implementation(project(":common:android-test"))

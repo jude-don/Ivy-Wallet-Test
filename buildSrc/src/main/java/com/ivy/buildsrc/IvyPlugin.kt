@@ -34,7 +34,7 @@ abstract class IvyPlugin : Plugin<Project> {
             testImplementation("com.willowtreeapps.assertk:assertk:${Versions.assertK}")
             androidTestImplementation("com.willowtreeapps.assertk:assertk:${Versions.assertK}")
             testImplementation("io.mockk:mockk:${Versions.mockk}")
-            androidTestImplementation("io.mockk:mockk-android:${Versions.mockk}")
+           // androidTestImplementation("io.mockk:mockk-android:${Versions.mockk}")
         }
     }
 
