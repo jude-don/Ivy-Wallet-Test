@@ -9,6 +9,7 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -29,7 +30,7 @@ class SumValuesInCurrencyFlowTest{
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `SumValuesInCurrencyFlow should correctly sum values in the desired currency`() = runTest {
+    fun `SumValuesInCurrencyFlow should correctly sum values in the desired currency`() = runBlocking<Unit> {
         val inputValues = listOf(
             Value(100.0, "EUR"), // 100 EUR
             Value(50.0, "USD")   // 50 USD
