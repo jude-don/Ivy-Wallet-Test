@@ -63,6 +63,22 @@ fun accountEntityOrderNum(ordernum:Double): AccountEntity{
     )
 }
 
+fun accountEntityParam(ordernum:Double, name: String, currency: String): AccountEntity{
+    return AccountEntity(
+        id = UUID.randomUUID().toString(),
+        name = name,
+        currency = currency,
+        color = 0x000000,
+        icon = null,
+        folderId = null,
+        orderNum = ordernum,
+        excluded = false,
+        state = AccountState.Default,
+        sync = SyncState.Syncing,
+        lastUpdated = Instant.now()
+    )
+}
+
 fun accountFolderEntity(ordernum: Double): AccountFolderEntity{
     return AccountFolderEntity(
         id = UUID.randomUUID().toString(),
