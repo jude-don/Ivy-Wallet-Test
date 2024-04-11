@@ -4,6 +4,7 @@ import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.exclude
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -39,6 +40,13 @@ abstract class IvyPlugin : Plugin<Project> {
     }
 
     private fun androidTest(project: Project) {
+        project.dependencies { //adding dependies to test source set
+            androidTestImplementation("com.willowtreeapps.assertk:assertk:${Versions.assertK}")
+            androidTestImplementation("io.mockk:mockk-android:${Versions.mockk}")
+        }
+        project.configurations.getByName("androidTestImplementation") {
+            exclude(group = "io.mockk", module = "mockk-agent-jvm")
+        }
         project.androidLibrary().defaultConfig {
             testInstrumentationRunner = "com.ivy.common.androidtest.HiltTestRunner"
         }
@@ -101,6 +109,9 @@ abstract class IvyPlugin : Plugin<Project> {
         }
     }
 
+//    private fun androidTest(project: Project){
+//
+//    }
     private fun setProjectSdkVersions(project: Project) {
         val library = project.androidLibrary()
         library.compileSdk = com.ivy.buildsrc.Project.compileSdkVersion

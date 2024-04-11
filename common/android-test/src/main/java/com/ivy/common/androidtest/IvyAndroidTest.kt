@@ -17,7 +17,7 @@ import javax.inject.Inject
 abstract class IvyAndroidTest {
 
     @get:Rule
-    val hiltRule = HiltAndroidRule(this)
+    val hiltRule = HiltAndroidRule(this) // This is the hilt reference for testing with hilt
 
     @Inject
     lateinit var db: IvyWalletCoreDb
@@ -25,19 +25,19 @@ abstract class IvyAndroidTest {
     @Inject
     lateinit var timeProvider: TimeProvider
 
-    protected lateinit var context: Context
+    protected lateinit var context: Context //This is the reference to the context
 
     @Before
-    open fun setUp() {
+    open fun setUp() { // This is the test setup function
         context = ApplicationProvider.getApplicationContext()
-        hiltRule.inject()
-        db.clearAllTables()
+        hiltRule.inject() //This line is used to inject all dependencies
+        db.clearAllTables() // this is to clear our database
         clearDataStore()
     }
 
     @After
     open fun tearDown() {
-        db.close()
+        db.close() // This is to close our database connection
     }
 
     protected fun setDate(date: LocalDate) {

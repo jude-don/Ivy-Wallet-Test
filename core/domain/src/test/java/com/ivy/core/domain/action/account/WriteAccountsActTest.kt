@@ -58,9 +58,9 @@ class WriteAccountsActTest{
         // When saving accounts
         writeAccountsAct(Modify.Save(accountLists))
 
-        // Verify that accountDaoFake's save method is called with the correct entities
-        // Note: We're directly checking the internal state of accountDaoFake since it's a fake, not a mock.
-            assert(accountDaoFake.accountsReadOnly.any { it.name == "Savings" && it.currency == "USD" })
+
+        //assertions
+        assert(accountDaoFake.accountsReadOnly.any { it.name == "Savings" && it.currency == "USD" })
         assert(accountDaoFake.accountsReadOnly.any { it.name == "Checkings" && it.currency == "USD" })
     }
 

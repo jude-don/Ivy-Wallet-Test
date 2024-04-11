@@ -30,7 +30,7 @@ import javax.inject.Singleton
     components = [SingletonComponent::class],
     replaces = [CorePersistenceModuleDI::class]
 )
-object TestCorePersistenceModuleDI {
+object TestCorePersistenceModuleDI { // This it the persistence module for our in memory database builder
     @Provides
     @Singleton
     fun provideIvyWalletDb(@ApplicationContext appContext: Context): IvyWalletCoreDb =
