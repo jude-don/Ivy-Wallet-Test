@@ -47,9 +47,9 @@ class AccBalanceFlowTest{
         // Execute the createFlow function
         val result = accBalanceFlow(input).first()
 
-        // Assert that the result is the expected balance
+        // Assert that the result amount is the expected balance amount
         assertThat(result.amount).isEqualTo(expectedBalance.amount)
-        //assertEquals(expectedBalance, result.amount)
+
 
     }
 }
