@@ -16,6 +16,7 @@ apply<com.ivy.buildsrc.IvyPlugin>()
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation(project(":common:android-test"))
     Hilt()
     implementation(project(":common:main"))
     implementation(project(":core:persistence"))

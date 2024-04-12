@@ -1,4 +1,4 @@
-package com.ivy.core.domain.action.exchange
+package com.ivy.core.ui.time.picker.date
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -6,21 +6,19 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.extension.AfterEachCallback
-import org.junit.jupiter.api.extension.BeforeEachCallback
-import org.junit.jupiter.api.extension.ExtensionContext
-
+import org.junit.rules.TestWatcher
+import org.junit.runner.Description
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class MainCoroutineExtension(
+class MainCoroutineRule(
     val testDispatcher: TestDispatcher = StandardTestDispatcher()
-): BeforeEachCallback, AfterEachCallback {
+) : TestWatcher() {
 
-    override fun beforeEach(context: ExtensionContext?) {
+    override fun starting(description: Description?) {
         Dispatchers.setMain(testDispatcher)
     }
 
-    override fun afterEach(context: ExtensionContext?) {
+    override fun finished(description: Description?) {
         Dispatchers.resetMain()
     }
 }

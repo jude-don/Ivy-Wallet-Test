@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.Packaging
 import com.ivy.buildsrc.*
 
 plugins {
