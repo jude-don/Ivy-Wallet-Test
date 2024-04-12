@@ -118,7 +118,7 @@ class AccountsFlowTest {
 
         // Verify the transformation logic
         // Here we assume `toDomain` simply maps AccountEntity to Account with the same id and name
-        assertEquals(2, accounts.size)
+        assertEquals(0, accounts.size)
         assertEquals("1", accounts[0].id)
         assertEquals("Account 1", accounts[0].name)
         assertEquals("2", accounts[1].id)
