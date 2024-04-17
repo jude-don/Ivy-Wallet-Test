@@ -21,8 +21,7 @@ import javax.inject.Inject
 /**
  * Calculates [Stats] (income, expense, counts, balance) for a list of [Transaction]
  * converted in a **outputCurrency** of your choice.
- */
-class CalculateFlow @Inject constructor(
+ */class CalculateFlow @Inject constructor(
     private val exchangeRatesFlow: ExchangeRatesFlow,
 ) : FlowAction<CalculateFlow.Input, Stats>() {
     /**
