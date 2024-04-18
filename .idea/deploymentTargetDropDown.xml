@@ -2,6 +2,9 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="AccountScreenTest">
+        <State />
+      </entry>
       <entry key="CreateTransactionE2E">
         <State />
       </entry>
@@ -11,7 +14,7 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="testCreatingExpenseWithCategoriesAndAccount()">
+      <entry key="testCreatingAccount()">
         <State />
       </entry>
       <entry key="testSelectingDateRange()">
