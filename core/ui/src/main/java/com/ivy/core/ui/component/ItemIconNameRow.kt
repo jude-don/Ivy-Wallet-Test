@@ -10,6 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ivy.core.ui.R
@@ -52,7 +54,8 @@ fun ItemIconNameRow(
         )
         SpacerHor(width = 8.dp)
         ItemNameInput(
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f)
+                .semantics { contentDescription= nameInputHint },
             initialName = initialName,
             hint = nameInputHint,
             feeling = Feeling.Custom(color),
